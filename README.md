@@ -7,6 +7,8 @@ Plataforma gratuita de ferramentas digitais com React, TypeScript e Vite. Interf
 **Endereço de publicação:** [fernandoolimaaa.github.io/utilhub/](https://fernandoolimaaa.github.io/utilhub/)  
 **Repositório:** [FernandooLimaaa/utilhub](https://github.com/FernandooLimaaa/utilhub)
 
+Site publicado e verificado em **11/11/2026**, com GitHub Actions. [Registro da primeira publicação](docs/PUBLICATION.md).
+
 ## Ferramentas disponíveis
 
 | Ferramenta | Recursos |
@@ -65,6 +67,8 @@ Requer Chrome/Edge instalado. O runner detecta os caminhos comuns; outro execut�
 npm run test:browser
 # Após npm run build: valida a configuração real em /utilhub/
 npm run test:browser -- --production
+# Verificações de navegação na versão pública, sem enviar feedback
+npm run test:browser -- --site=https://fernandoolimaaa.github.io/utilhub/
 ```
 
 Foram aprovados **19 testes de lógica e 52 verificações com produção**, incluindo imagens, ZIP, QR decodificado, PDF A4 multipágina, temas, larguras de 320 a 1440 px, gestos e Central de Feedback. Não houve envio real de resposta ao Forms.

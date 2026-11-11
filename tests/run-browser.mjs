@@ -5,6 +5,7 @@ import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
+import { verifyLiveSite } from './live-site.mjs';
 
 const candidates = process.platform === 'win32'
   ? ['C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe','C:/Program Files/Google/Chrome/Application/chrome.exe']
@@ -47,6 +48,9 @@ try {
     pending.set(request,{resolve,reject,timer});socket.send(JSON.stringify({id:request,method,params}));
   });
   await call('Page.enable');
+  checks: {
+  const liveSite = process.argv.find(argument => argument.startsWith('--site='))?.slice(7);
+  if(liveSite){ await verifyLiveSite(call, liveSite); break checks; }
   let total=0, failures=0;
   const waitFor=async expression=>{for(let i=0;i<100;i++){const response=await call('Runtime.evaluate',{expression,returnByValue:true});if(response.result?.value)return response.result.value;await delay(50);}throw new Error('Timeout: '+expression);};
   // Only external navigation is stubbed in integration tests. No submission is made.
@@ -183,6 +187,7 @@ try {
   console.log('PASS Currículo: PDF real com '+pages+' páginas A4 ('+bytes.length+' bytes)');total++;
   console.log(total+' testes de navegador aprovados; '+failures+' falhas.');
   if(failures)process.exitCode=1;
+  }
 } finally {
   if(socket?.readyState===WebSocket.OPEN)socket.close();
   if(browser && browser.exitCode===null)browser.kill();
