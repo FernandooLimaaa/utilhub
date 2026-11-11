@@ -1,0 +1,30 @@
+{
+  "name": "utilhub",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "test:browser": "node tests/run-browser.mjs"
+  },
+  "dependencies": {
+    "fflate": "^0.8.3",
+    "lucide-react": "^0.468.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "jsqr": "^1.4.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.0"
+  }
+}

@@ -1,0 +1,38 @@
+node_modules/
+dist/
+*.local
+*.tsbuildinfo
+
+# Environment files and private keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs, caches, coverage and generated browser artifacts
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vite/
+coverage/
+playwright-report/
+test-results/
+*.tmp
+*.temp
+.artifacts/
+.tools/
+
+# Editor, operating system and local agent state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+.codex/
+.agents/
+.aws/
+.openai/
